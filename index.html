@@ -19,12 +19,9 @@
     .step-text { font-size: 14px; color: #333; line-height: 1.6; }
     .step-text strong { font-weight: 600; }
     .step-text em { font-style: italic; color: #555; }
+    .step-hint { font-size: 13px; color: #7A1F2E; font-style: italic; margin: 2px 0 10px 36px; line-height: 1.5; }
     .install-btn { display: block; width: 100%; text-align: center; padding: 13px; background: #7A1F2E; color: #fff; border-radius: 10px; font-size: 15px; font-weight: 600; text-decoration: none; margin-top: 1rem; border: none; cursor: pointer; }
     .install-btn:hover { background: #6a1a27; }
-    .whats-new { background: #fdf6f0; border: 1px solid #f0e4d4; border-radius: 12px; padding: 1rem; margin-bottom: 1rem; }
-    .whats-new-title { font-size: 12px; font-weight: 600; color: #7A1F2E; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 8px; }
-    .whats-new ul { padding-left: 1.2rem; }
-    .whats-new ul li { font-size: 13px; color: #555; line-height: 1.7; }
     .q-label { font-size: 14px; font-weight: 600; color: #1a1a1a; margin-bottom: 6px; display: block; }
     .q-sub { font-size: 12px; color: #888; margin-bottom: 10px; display: block; line-height: 1.5; }
     .q-group { margin-bottom: 1.4rem; }
@@ -60,20 +57,16 @@
     <div class="logo-sub">Beta Tester Edition &middot; Thank you for helping!</div>
   </div>
 
-  <div class="whats-new">
-    <div class="whats-new-title">&#127863; What's new in this version</div>
-    <ul>
-      <li>Fixed: the "Already have an account?" link on the login screen now works</li>
-      <li>The email and password fields have been restyled and look cleaner</li>
-    </ul>
-  </div>
-
   <div class="section">
     <div class="section-title">Step 1 — Open the app</div>
+
     <div class="step">
       <div class="step-num">1</div>
       <div class="step-text">Tap the button below to open <strong>pourrecall.app</strong> in your browser</div>
     </div>
+
+    <p class="step-hint">&#128241; Next, let's add Pour Recall to your phone's home screen — this makes it feel just like a real app and makes it easier to come back to!</p>
+
     <div class="step">
       <div class="step-num">2</div>
       <div class="step-text"><strong>iPhone:</strong> Tap the <strong>three dots</strong> in the bottom right corner of your screen &rarr; tap the <strong>Share box</strong> (the box with an arrow pointing up) &rarr; scroll down and tap <strong>Add to Home Screen</strong></div>
@@ -84,8 +77,9 @@
     </div>
     <div class="step">
       <div class="step-num">4</div>
-      <div class="step-text">Try logging in, creating an account, and clicking <strong>"Already have an account?"</strong> — then come back here to share your thoughts!</div>
+      <div class="step-text">Add a few wines, click around, and explore — then come back here to share your thoughts!</div>
     </div>
+
     <a class="install-btn" href="https://pourrecall.app" target="_blank">Open Pour Recall &rarr;</a>
   </div>
 
@@ -109,6 +103,17 @@
         <div class="thumb-btn" id="yes-btn" onclick="pickThumb('yes')">&#128077; Yes</div>
         <div class="thumb-btn" id="maybe-btn" onclick="pickThumb('maybe')">&#129300; Maybe</div>
         <div class="thumb-btn" id="no-btn" onclick="pickThumb('no')">&#128078; Not really</div>
+      </div>
+    </div>
+
+    <div class="q-group">
+      <span class="q-label">When rating a wine, which would feel most natural to you?</span>
+      <span class="q-sub">Pour Recall currently uses a 5 wine glass rating — but we want to know what feels best to you!</span>
+      <div class="radio-row" id="rating-pref">
+        <div class="radio-opt" onclick="pickRadio('rating-pref', this, '5 wine glass rating')">&#127863;&#127863;&#127863;&#127863;&#127863; 1–5 glasses</div>
+        <div class="radio-opt" onclick="pickRadio('rating-pref', this, 'Thumbs up or down')">&#128077; / &#128078; Thumbs up/down</div>
+        <div class="radio-opt" onclick="pickRadio('rating-pref', this, '5 star rating')">&#11088; 1–5 stars</div>
+        <div class="radio-opt" onclick="pickRadio('rating-pref', this, 'Emoji reaction')">&#128523; Emoji</div>
       </div>
     </div>
 
@@ -147,7 +152,6 @@
       <span class="q-sub">Right now you can't see your password while typing. Try the eye icon below — tap it to reveal your password, tap again to hide it. Would you want this when logging in?</span>
       <div class="eye-demo">
         <input type="password" id="pw-preview" value="mysecretpassword" readonly />
-        <!-- Starts with closed eye because password is hidden -->
         <button class="eye-toggle" onclick="toggleEye()" id="eye-btn" title="Show password">&#128584;</button>
       </div>
       <div class="radio-row" id="eye-pref">
@@ -209,7 +213,7 @@
 
 </div>
 <script>
-  const state = { ease: 0, useAgain: '', linkWorks: '', loginLook: '', fieldsEase: '', eyePref: '', readability: '', recommend: '' };
+  const state = { ease: 0, useAgain: '', ratingPref: '', linkWorks: '', loginLook: '', fieldsEase: '', eyePref: '', readability: '', recommend: '' };
 
   document.querySelectorAll('#ease-stars .star').forEach(function(s) {
     s.addEventListener('click', function() {
@@ -234,22 +238,21 @@
     var input = document.getElementById('pw-preview');
     var btn = document.getElementById('eye-btn');
     if (input.type === 'password') {
-      // Password hidden -> show it: open eye
       input.type = 'text';
-      btn.innerHTML = '&#128065;'; // open eye
+      btn.innerHTML = '&#128065;';
     } else {
-      // Password visible -> hide it: closed eye
       input.type = 'password';
-      btn.innerHTML = '&#128584;'; // closed eye
+      btn.innerHTML = '&#128584;';
     }
   }
 
   function submitFeedback() {
     var name = document.getElementById('tester-name').value || 'A beta tester';
     var lines = [
-      'Pour Recall Beta Feedback — v2', '==============================', 'Tester: ' + name, '',
+      'Pour Recall Beta Feedback', '=========================', 'Tester: ' + name, '',
       'Ease of use (1-5 stars): ' + (state.ease || 'not rated'),
       'Would use again: ' + (state.useAgain || 'not answered'),
+      'Preferred rating system: ' + (state.ratingPref || 'not answered'),
       '"Already have an account?" link worked: ' + (state.linkWorks || 'not answered'),
       'Login screen look and feel: ' + (state.loginLook || 'not answered'),
       'Email/password fields ease: ' + (state.fieldsEase || 'not answered'),
@@ -260,7 +263,7 @@
       'One thing to change: ' + (document.getElementById('one-change').value || 'none'),
       'Would recommend: ' + (state.recommend || 'not answered')
     ];
-    var mailto = 'mailto:ifiogirl@outlook.com?subject=' + encodeURIComponent('Pour Recall Beta Feedback v2 — ' + name) + '&body=' + encodeURIComponent(lines.join('\n'));
+    var mailto = 'mailto:ifiogirl@outlook.com?subject=' + encodeURIComponent('Pour Recall Beta Feedback — ' + name) + '&body=' + encodeURIComponent(lines.join('\n'));
     window.location.href = mailto;
     setTimeout(function() { document.getElementById('form-section').style.display = 'none'; document.getElementById('thankyou').style.display = 'block'; }, 800);
   }
