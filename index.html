@@ -21,6 +21,10 @@
     .step-text em { font-style: italic; color: #555; }
     .install-btn { display: block; width: 100%; text-align: center; padding: 13px; background: #7A1F2E; color: #fff; border-radius: 10px; font-size: 15px; font-weight: 600; text-decoration: none; margin-top: 1rem; border: none; cursor: pointer; }
     .install-btn:hover { background: #6a1a27; }
+    .whats-new { background: #fdf6f0; border: 1px solid #f0e4d4; border-radius: 12px; padding: 1rem; margin-bottom: 1rem; }
+    .whats-new-title { font-size: 12px; font-weight: 600; color: #7A1F2E; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 8px; }
+    .whats-new ul { padding-left: 1.2rem; }
+    .whats-new ul li { font-size: 13px; color: #555; line-height: 1.7; }
     .q-label { font-size: 14px; font-weight: 600; color: #1a1a1a; margin-bottom: 6px; display: block; }
     .q-sub { font-size: 12px; color: #888; margin-bottom: 10px; display: block; line-height: 1.5; }
     .q-group { margin-bottom: 1.4rem; }
@@ -56,6 +60,16 @@
     <div class="logo-sub">Beta Tester Edition &middot; Thank you for helping!</div>
   </div>
 
+  <!-- WHAT'S NEW -->
+  <div class="whats-new">
+    <div class="whats-new-title">&#127863; What's new in this version</div>
+    <ul>
+      <li>Fixed: the "Already have an account?" link on the login screen now works</li>
+      <li>The email and password fields have been restyled and look cleaner</li>
+    </ul>
+  </div>
+
+  <!-- INSTALL INSTRUCTIONS -->
   <div class="section">
     <div class="section-title">Step 1 — Open the app</div>
     <div class="step">
@@ -72,11 +86,12 @@
     </div>
     <div class="step">
       <div class="step-num">4</div>
-      <div class="step-text">Add a few wines, click around, and explore — then come back here to share your thoughts!</div>
+      <div class="step-text">Try logging in, creating an account, and clicking <strong>"Already have an account?"</strong> — then come back here to share your thoughts!</div>
     </div>
     <a class="install-btn" href="https://pourrecall.app" target="_blank">Open Pour Recall &rarr;</a>
   </div>
 
+  <!-- FEEDBACK FORM -->
   <div class="section" id="form-section">
     <div class="section-title">Step 2 — Quick feedback (2 min)</div>
 
@@ -100,29 +115,51 @@
       </div>
     </div>
 
+    <!-- LOGIN SPECIFIC -->
     <div class="q-group">
-      <span class="q-label">Did the 1–5 star rating feel natural to you?</span>
-      <div class="radio-row" id="rating-feel">
-        <div class="radio-opt" onclick="pickRadio('rating-feel', this, 'Yes, loved it')">Yes, loved it</div>
-        <div class="radio-opt" onclick="pickRadio('rating-feel', this, 'It was okay')">It was okay</div>
-        <div class="radio-opt" onclick="pickRadio('rating-feel', this, 'Prefer thumbs up/down')">Prefer &#128077;/&#128078;</div>
-        <div class="radio-opt" onclick="pickRadio('rating-feel', this, 'Prefer emoji')">Prefer emoji</div>
+      <span class="q-label">When you tapped "Already have an account?" did it work?</span>
+      <div class="radio-row" id="link-works">
+        <div class="radio-opt" onclick="pickRadio('link-works', this, 'Yes, worked perfectly')">Yes, worked!</div>
+        <div class="radio-opt" onclick="pickRadio('link-works', this, 'It was slow but worked')">Slow but worked</div>
+        <div class="radio-opt" onclick="pickRadio('link-works', this, 'No, still broken')">Still broken</div>
+        <div class="radio-opt" onclick="pickRadio('link-works', this, 'Did not try it')">Didn't try it</div>
       </div>
     </div>
 
     <div class="q-group">
-      <span class="q-label">Were you able to find your way around without confusion?</span>
-      <div class="radio-row" id="nav-ease">
-        <div class="radio-opt" onclick="pickRadio('nav-ease', this, 'Yes, totally')">Yes, totally</div>
-        <div class="radio-opt" onclick="pickRadio('nav-ease', this, 'Mostly')">Mostly</div>
-        <div class="radio-opt" onclick="pickRadio('nav-ease', this, 'Got confused a bit')">Got confused a bit</div>
-        <div class="radio-opt" onclick="pickRadio('nav-ease', this, 'Hard to navigate')">Hard to navigate</div>
+      <span class="q-label">How did the login screen look and feel?</span>
+      <div class="radio-row" id="login-look">
+        <div class="radio-opt" onclick="pickRadio('login-look', this, 'Clean and polished')">Clean and polished</div>
+        <div class="radio-opt" onclick="pickRadio('login-look', this, 'Pretty good')">Pretty good</div>
+        <div class="radio-opt" onclick="pickRadio('login-look', this, 'Needs more work')">Needs more work</div>
+        <div class="radio-opt" onclick="pickRadio('login-look', this, 'Confusing')">Confusing</div>
       </div>
     </div>
 
     <div class="q-group">
-      <span class="q-label">Did anything feel hard to find or unnecessary?</span>
-      <textarea id="hard-to-find" rows="2" placeholder="Optional — just quick notes are great!"></textarea>
+      <span class="q-label">Were the email and password fields easy to find and use?</span>
+      <div class="radio-row" id="fields-ease">
+        <div class="radio-opt" onclick="pickRadio('fields-ease', this, 'Yes, very easy')">Yes, very easy</div>
+        <div class="radio-opt" onclick="pickRadio('fields-ease', this, 'Pretty easy')">Pretty easy</div>
+        <div class="radio-opt" onclick="pickRadio('fields-ease', this, 'A little confusing')">A little confusing</div>
+        <div class="radio-opt" onclick="pickRadio('fields-ease', this, 'Hard to use')">Hard to use</div>
+      </div>
+    </div>
+
+    <!-- PASSWORD EYE -->
+    <div class="highlight-card">
+      <span class="q-label">&#128274; Would you like a show/hide password option?</span>
+      <span class="q-sub">Right now you can't see your password while typing. Try the eye icon below — would you want this when logging in?</span>
+      <div class="eye-demo">
+        <input type="password" id="pw-preview" value="mysecretpassword" readonly />
+        <button class="eye-toggle" onclick="toggleEye()" id="eye-btn" title="Toggle password visibility">&#128065;</button>
+      </div>
+      <div class="radio-row" id="eye-pref">
+        <div class="radio-opt" onclick="pickRadio('eye-pref', this, 'Yes, definitely add it')">Yes, add it!</div>
+        <div class="radio-opt" onclick="pickRadio('eye-pref', this, 'Would be nice but not a must')">Nice but not a must</div>
+        <div class="radio-opt" onclick="pickRadio('eye-pref', this, 'Doesnt bother me')">Doesn't bother me</div>
+        <div class="radio-opt" onclick="pickRadio('eye-pref', this, 'No preference')">No preference</div>
+      </div>
     </div>
 
     <div class="q-group">
@@ -140,19 +177,9 @@
       <textarea id="clunky" rows="2" placeholder="Optional — any detail helps!"></textarea>
     </div>
 
-    <div class="highlight-card">
-      <span class="q-label">&#128274; Login experience — show/hide password</span>
-      <span class="q-sub">Right now you can't see your password while typing. Try the eye icon below — would you want this feature when logging in to Pour Recall?</span>
-      <div class="eye-demo">
-        <input type="password" id="pw-preview" value="mysecretpassword" readonly />
-        <button class="eye-toggle" onclick="toggleEye()" id="eye-btn" title="Toggle password visibility">&#128065;</button>
-      </div>
-      <div class="radio-row" id="eye-pref">
-        <div class="radio-opt" onclick="pickRadio('eye-pref', this, 'Yes, definitely add it')">Yes, add it!</div>
-        <div class="radio-opt" onclick="pickRadio('eye-pref', this, 'Would be nice but not a must')">Nice but not a must</div>
-        <div class="radio-opt" onclick="pickRadio('eye-pref', this, 'Doesnt bother me')">Doesn't bother me</div>
-        <div class="radio-opt" onclick="pickRadio('eye-pref', this, 'No preference')">No preference</div>
-      </div>
+    <div class="q-group">
+      <span class="q-label">Did anything feel hard to find or confusing?</span>
+      <textarea id="hard-to-find" rows="2" placeholder="Optional — just quick notes are great!"></textarea>
     </div>
 
     <div class="q-group">
@@ -186,7 +213,7 @@
 
 </div>
 <script>
-  const state = { ease: 0, useAgain: '', ratingFeel: '', navEase: '', readability: '', recommend: '', eyePref: '' };
+  const state = { ease: 0, useAgain: '', linkWorks: '', loginLook: '', fieldsEase: '', eyePref: '', readability: '', recommend: '' };
   document.querySelectorAll('#ease-stars .star').forEach(function(s) {
     s.addEventListener('click', function() {
       state.ease = +this.dataset.v;
@@ -212,19 +239,20 @@
   function submitFeedback() {
     var name = document.getElementById('tester-name').value || 'A beta tester';
     var lines = [
-      'Pour Recall Beta Feedback', '========================', 'Tester: ' + name, '',
+      'Pour Recall Beta Feedback — v2', '==============================', 'Tester: ' + name, '',
       'Ease of use (1-5 stars): ' + (state.ease || 'not rated'),
       'Would use again: ' + (state.useAgain || 'not answered'),
-      'Rating system feel: ' + (state.ratingFeel || 'not answered'),
-      'Navigation ease: ' + (state.navEase || 'not answered'),
-      'Hard to find / unnecessary: ' + (document.getElementById('hard-to-find').value || 'none'),
+      '"Already have an account?" link worked: ' + (state.linkWorks || 'not answered'),
+      'Login screen look and feel: ' + (state.loginLook || 'not answered'),
+      'Email/password fields ease: ' + (state.fieldsEase || 'not answered'),
+      'Show/hide password preference: ' + (state.eyePref || 'not answered'),
       'Readability: ' + (state.readability || 'not answered'),
       'Felt slow or clunky: ' + (document.getElementById('clunky').value || 'none'),
-      'Show/hide password preference: ' + (state.eyePref || 'not answered'),
+      'Hard to find / confusing: ' + (document.getElementById('hard-to-find').value || 'none'),
       'One thing to change: ' + (document.getElementById('one-change').value || 'none'),
       'Would recommend: ' + (state.recommend || 'not answered')
     ];
-    var mailto = 'mailto:ifiogirl@outlook.com?subject=' + encodeURIComponent('Pour Recall Beta Feedback — ' + name) + '&body=' + encodeURIComponent(lines.join('\n'));
+    var mailto = 'mailto:ifiogirl@outlook.com?subject=' + encodeURIComponent('Pour Recall Beta Feedback v2 — ' + name) + '&body=' + encodeURIComponent(lines.join('\n'));
     window.location.href = mailto;
     setTimeout(function() { document.getElementById('form-section').style.display = 'none'; document.getElementById('thankyou').style.display = 'block'; }, 800);
   }
