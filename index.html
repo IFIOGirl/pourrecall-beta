@@ -12,6 +12,16 @@
     .logo-img { width: 90px; height: auto; margin: 0 auto 8px; display: block; }
     .logo-name { font-size: 22px; font-weight: 600; color: #1a1a1a; letter-spacing: 0.06em; margin-top: 4px; }
     .logo-sub { font-size: 13px; color: #888; margin-top: 4px; }
+
+    /* Intro expectations card */
+    .intro-card { background: #fff; border: 1px solid #e8e0d8; border-radius: 16px; padding: 1.25rem; margin-bottom: 1rem; }
+    .intro-greeting { font-size: 16px; font-weight: 600; color: #7A1F2E; margin-bottom: 10px; }
+    .intro-text { font-size: 14px; color: #444; line-height: 1.7; margin-bottom: 12px; }
+    .intro-focus { background: #fdf6f0; border-left: 3px solid #7A1F2E; border-radius: 0 8px 8px 0; padding: 10px 14px; margin-bottom: 12px; }
+    .intro-focus p { font-size: 13px; color: #555; line-height: 1.7; }
+    .intro-focus p strong { color: #7A1F2E; font-weight: 600; }
+    .intro-note { font-size: 12px; color: #999; font-style: italic; line-height: 1.6; }
+
     .section { background: #fff; border: 1px solid #e8e0d8; border-radius: 16px; padding: 1.25rem; margin-bottom: 1rem; }
     .section-title { font-size: 11px; font-weight: 600; color: #999; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 1rem; }
     .step { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 12px; }
@@ -40,6 +50,8 @@
     .eye-demo { display: flex; align-items: center; gap: 8px; background: #fff; border: 1px solid #e0d8d0; border-radius: 10px; padding: 9px 12px; margin: 10px 0 12px; }
     .eye-demo input { flex: 1; border: none; background: transparent; font-size: 14px; font-family: inherit; color: #1a1a1a; outline: none; width: 100%; }
     .eye-toggle { background: none; border: none; cursor: pointer; font-size: 18px; padding: 2px 4px; color: #888; flex-shrink: 0; }
+    .aesthetics-card { background: #f7f3ef; border: 1px solid #e8e0d8; border-radius: 12px; padding: 1rem; margin-bottom: 1.4rem; }
+    .aesthetics-card .q-label { color: #7A1F2E; }
     .submit-btn { width: 100%; padding: 14px; background: #7A1F2E; color: #fff; border: none; border-radius: 12px; font-size: 16px; font-weight: 600; cursor: pointer; margin-top: 0.5rem; font-family: inherit; }
     .submit-btn:hover { background: #6a1a27; }
     .thankyou { display: none; text-align: center; padding: 3rem 1rem; }
@@ -57,15 +69,27 @@
     <div class="logo-sub">Beta Tester Edition &middot; Thank you for helping!</div>
   </div>
 
+  <!-- EXPECTATIONS INTRO CARD -->
+  <div class="intro-card">
+    <div class="intro-greeting">&#127863; Hey there, and thank you!</div>
+    <p class="intro-text">You're one of the first people to try Pour Recall — the sip it, snap it, save it wine journal app you didn't know you needed. This means so much, and your honest thoughts will directly shape what this becomes.</p>
+    <div class="intro-focus">
+      <p><strong>What we're most focused on right now:</strong><br />
+      Does the app feel easy and natural to move through? Can you get from screen to screen without confusion? Does the flow make sense? That's the heart of what we need to know at this stage.</p>
+    </div>
+    <p class="intro-text">Think of this like a test drive — we want to know if the engine runs smoothly, not just if you like the paint color. That said, the logo and overall look are also a work in progress, and if something catches your eye — good or not so good — we'd love to hear that too. There's a spot for it at the end!</p>
+    <p class="intro-note">No wine expertise needed. No long answers required. Just your honest experience. &#128149;</p>
+  </div>
+
+  <!-- INSTALL INSTRUCTIONS -->
   <div class="section">
     <div class="section-title">Step 1 — Open the app</div>
-
     <div class="step">
       <div class="step-num">1</div>
       <div class="step-text">Tap the button below to open <strong>pourrecall.app</strong> in your browser</div>
     </div>
 
-    <p class="step-hint">&#128241; Next, let's add Pour Recall to your phone's home screen — this makes it feel just like a real app and makes it easier to come back to!</p>
+    <p class="step-hint">&#128241; Next, let's add Pour Recall to your phone's home screen — this makes it feel just like a real app and makes it so much easier to use!</p>
 
     <div class="step">
       <div class="step-num">2</div>
@@ -79,10 +103,10 @@
       <div class="step-num">4</div>
       <div class="step-text">Add a few wines, click around, and explore — then come back here to share your thoughts!</div>
     </div>
-
     <a class="install-btn" href="https://pourrecall.app" target="_blank">Open Pour Recall &rarr;</a>
   </div>
 
+  <!-- FEEDBACK FORM -->
   <div class="section" id="form-section">
     <div class="section-title">Step 2 — Quick feedback (2 min)</div>
 
@@ -107,13 +131,12 @@
     </div>
 
     <div class="q-group">
-      <span class="q-label">When rating a wine, which would feel most natural to you?</span>
-      <span class="q-sub">Pour Recall currently uses a 5 wine glass rating — but we want to know what feels best to you!</span>
-      <div class="radio-row" id="rating-pref">
-        <div class="radio-opt" onclick="pickRadio('rating-pref', this, '5 wine glass rating')">&#127863;&#127863;&#127863;&#127863;&#127863; 1–5 glasses</div>
-        <div class="radio-opt" onclick="pickRadio('rating-pref', this, 'Thumbs up or down')">&#128077; / &#128078; Thumbs up/down</div>
-        <div class="radio-opt" onclick="pickRadio('rating-pref', this, '5 star rating')">&#11088; 1–5 stars</div>
-        <div class="radio-opt" onclick="pickRadio('rating-pref', this, 'Emoji reaction')">&#128523; Emoji</div>
+      <span class="q-label">Were you able to move between screens without getting lost?</span>
+      <div class="radio-row" id="nav-ease">
+        <div class="radio-opt" onclick="pickRadio('nav-ease', this, 'Yes, totally smooth')">Yes, totally smooth</div>
+        <div class="radio-opt" onclick="pickRadio('nav-ease', this, 'Mostly')">Mostly</div>
+        <div class="radio-opt" onclick="pickRadio('nav-ease', this, 'Got confused a bit')">Got confused a bit</div>
+        <div class="radio-opt" onclick="pickRadio('nav-ease', this, 'Hard to navigate')">Hard to navigate</div>
       </div>
     </div>
 
@@ -124,16 +147,6 @@
         <div class="radio-opt" onclick="pickRadio('link-works', this, 'It was slow but worked')">Slow but worked</div>
         <div class="radio-opt" onclick="pickRadio('link-works', this, 'No, still broken')">Still broken</div>
         <div class="radio-opt" onclick="pickRadio('link-works', this, 'Did not try it')">Didn't try it</div>
-      </div>
-    </div>
-
-    <div class="q-group">
-      <span class="q-label">How did the login screen look and feel?</span>
-      <div class="radio-row" id="login-look">
-        <div class="radio-opt" onclick="pickRadio('login-look', this, 'Clean and polished')">Clean and polished</div>
-        <div class="radio-opt" onclick="pickRadio('login-look', this, 'Pretty good')">Pretty good</div>
-        <div class="radio-opt" onclick="pickRadio('login-look', this, 'Needs more work')">Needs more work</div>
-        <div class="radio-opt" onclick="pickRadio('login-look', this, 'Confusing')">Confusing</div>
       </div>
     </div>
 
@@ -149,7 +162,7 @@
 
     <div class="highlight-card">
       <span class="q-label">&#128274; Would you like a show/hide password option?</span>
-      <span class="q-sub">Right now you can't see your password while typing. Try the eye icon below — tap it to reveal your password, tap again to hide it. Would you want this when logging in?</span>
+      <span class="q-sub">Right now you can't see your password while typing. Try the eye icon below — tap to reveal, tap again to hide. Would you want this when logging in?</span>
       <div class="eye-demo">
         <input type="password" id="pw-preview" value="mysecretpassword" readonly />
         <button class="eye-toggle" onclick="toggleEye()" id="eye-btn" title="Show password">&#128584;</button>
@@ -163,17 +176,18 @@
     </div>
 
     <div class="q-group">
-      <span class="q-label">Were the colors and text easy to read?</span>
-      <div class="radio-row" id="readability">
-        <div class="radio-opt" onclick="pickRadio('readability', this, 'Very easy')">Very easy</div>
-        <div class="radio-opt" onclick="pickRadio('readability', this, 'Pretty good')">Pretty good</div>
-        <div class="radio-opt" onclick="pickRadio('readability', this, 'A bit tricky')">A bit tricky</div>
-        <div class="radio-opt" onclick="pickRadio('readability', this, 'Hard to read')">Hard to read</div>
+      <span class="q-label">When rating a wine, which would feel most natural to you?</span>
+      <span class="q-sub">Pour Recall currently uses a 5 wine glass rating — but we want to know what feels best to you!</span>
+      <div class="radio-row" id="rating-pref">
+        <div class="radio-opt" onclick="pickRadio('rating-pref', this, '5 wine glass rating')">&#127863;&#127863;&#127863;&#127863;&#127863; 1–5 glasses</div>
+        <div class="radio-opt" onclick="pickRadio('rating-pref', this, 'Thumbs up or down')">&#128077; / &#128078; Thumbs</div>
+        <div class="radio-opt" onclick="pickRadio('rating-pref', this, '5 star rating')">&#11088; 1–5 stars</div>
+        <div class="radio-opt" onclick="pickRadio('rating-pref', this, 'Emoji reaction')">&#128523; Emoji</div>
       </div>
     </div>
 
     <div class="q-group">
-      <span class="q-label">Did anything feel slow or clunky?</span>
+      <span class="q-label">Did anything feel slow, clunky, or take too many steps?</span>
       <textarea id="clunky" rows="2" placeholder="Optional — any detail helps!"></textarea>
     </div>
 
@@ -183,8 +197,21 @@
     </div>
 
     <div class="q-group">
-      <span class="q-label">One thing you'd change about the app:</span>
+      <span class="q-label">One thing you'd change about how the app works:</span>
       <textarea id="one-change" rows="2" placeholder="No wrong answers!"></textarea>
+    </div>
+
+    <!-- AESTHETICS SECTION -->
+    <div class="aesthetics-card">
+      <span class="q-label">&#127912; Bonus — aesthetics & first impressions</span>
+      <span class="q-sub">Remember, the look and feel is still a work in progress — but your gut reaction matters! What did you think of the overall vibe, logo, and design so far?</span>
+      <div class="radio-row" id="aesthetics" style="margin-bottom: 12px;">
+        <div class="radio-opt" onclick="pickRadio('aesthetics', this, 'Loved the look!')">Loved the look!</div>
+        <div class="radio-opt" onclick="pickRadio('aesthetics', this, 'Looks good, minor things')">Looks good, minor things</div>
+        <div class="radio-opt" onclick="pickRadio('aesthetics', this, 'Needs some work')">Needs some work</div>
+        <div class="radio-opt" onclick="pickRadio('aesthetics', this, 'Not my style')">Not my style</div>
+      </div>
+      <textarea id="aesthetics-notes" rows="2" placeholder="Any specific thoughts on the look, colors, or logo? (optional)"></textarea>
     </div>
 
     <div class="q-group">
@@ -213,7 +240,7 @@
 
 </div>
 <script>
-  const state = { ease: 0, useAgain: '', ratingPref: '', linkWorks: '', loginLook: '', fieldsEase: '', eyePref: '', readability: '', recommend: '' };
+  const state = { ease: 0, useAgain: '', navEase: '', linkWorks: '', fieldsEase: '', eyePref: '', ratingPref: '', aesthetics: '', recommend: '' };
 
   document.querySelectorAll('#ease-stars .star').forEach(function(s) {
     s.addEventListener('click', function() {
@@ -252,15 +279,16 @@
       'Pour Recall Beta Feedback', '=========================', 'Tester: ' + name, '',
       'Ease of use (1-5 stars): ' + (state.ease || 'not rated'),
       'Would use again: ' + (state.useAgain || 'not answered'),
-      'Preferred rating system: ' + (state.ratingPref || 'not answered'),
-      '"Already have an account?" link worked: ' + (state.linkWorks || 'not answered'),
-      'Login screen look and feel: ' + (state.loginLook || 'not answered'),
+      'Screen navigation: ' + (state.navEase || 'not answered'),
+      '"Already have an account?" link: ' + (state.linkWorks || 'not answered'),
       'Email/password fields ease: ' + (state.fieldsEase || 'not answered'),
       'Show/hide password preference: ' + (state.eyePref || 'not answered'),
-      'Readability: ' + (state.readability || 'not answered'),
+      'Preferred rating system: ' + (state.ratingPref || 'not answered'),
       'Felt slow or clunky: ' + (document.getElementById('clunky').value || 'none'),
       'Hard to find / confusing: ' + (document.getElementById('hard-to-find').value || 'none'),
       'One thing to change: ' + (document.getElementById('one-change').value || 'none'),
+      'Aesthetics overall: ' + (state.aesthetics || 'not answered'),
+      'Aesthetics notes: ' + (document.getElementById('aesthetics-notes').value || 'none'),
       'Would recommend: ' + (state.recommend || 'not answered')
     ];
     var mailto = 'mailto:ifiogirl@outlook.com?subject=' + encodeURIComponent('Pour Recall Beta Feedback — ' + name) + '&body=' + encodeURIComponent(lines.join('\n'));
